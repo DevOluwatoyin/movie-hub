@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
 
 :root {
@@ -43,7 +47,6 @@
     background: transparent;
     padding: 0;
   }
-
   .form-case {
     background-image: linear-gradient(
       to right top,
@@ -67,7 +70,6 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
 @keyframes bgImage {
   0% {
     background-position: top;

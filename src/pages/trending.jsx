@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import MovieCard from "../components/MovieCard";
 
 const Trending = () => {
   const [movies, setMovies] = useState([]);
@@ -23,20 +24,7 @@ const Trending = () => {
       <h1 className="text-3xl font-bold py-4">Trending Movies</h1>
       <div className="cards grid grid-cols-[1fr] justify-center gap-5">
         {movies.map((movie) => (
-          <Link
-            to={`/movie/${movie.id}`}
-            key={movie.id}
-            className="line relative shadow-box-shadow pt-2 rounded-lg overflow-hidden hover:opacity-[0.6]"
-          >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-            />
-            <div className="text-center py-2">
-              <p className="md:text-xl">{movie.title}</p>
-              {movie.release_date && <p>{movie.release_date}</p>}
-            </div>
-          </Link>
+          <MovieCard movie={movie} key={movie.id} />
         ))}
       </div>
     </div>

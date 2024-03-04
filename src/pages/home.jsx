@@ -1,6 +1,7 @@
 import SearchBar from "../components/SearchBar";
-import { movieListing } from "../constants/movieListing";
+// import { movieListing } from "../constants/movieListing";
 import Listing from "../components/Listing";
+import { movieListing } from "../constants/movieListing";
 
 const Home = () => {
   return (

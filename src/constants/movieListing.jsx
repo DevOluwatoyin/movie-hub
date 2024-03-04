@@ -1,8 +1,10 @@
+import { MovieList } from "../components/MovieList";
+
 export const movieListing = [
   {
     title: "What's Trending",
     path: "/trending",
-    component:"trending",
+    component:<MovieList />,
   },
   {
     title: "Popular",

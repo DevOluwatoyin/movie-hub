@@ -12,14 +12,12 @@ export const movieListing = [
     title: "Popular",
     path: "/popular",
     component: (
-      <MovieList fetchUrl="https://api.themoviedb.org/3/trending/all/day" />
+      <MovieList fetchUrl="https://api.themoviedb.org/3/movie/popular" />
     ),
   },
   {
     title: "Trending",
     path: "/series",
-    component: (
-      <MovieList fetchUrl="https://api.themoviedb.org/3/trending/all/day" />
-    ),
+    component: <MovieList fetchUrl="https://api.themoviedb.org/3/tv/popular" />,
   },
 ];

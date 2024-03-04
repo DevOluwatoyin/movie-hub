@@ -10,7 +10,6 @@
   font-weight: 400;
   color-scheme: light dark;
   color: #ffffff;
-  /* background-color: #242424; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -47,6 +46,7 @@
     background: transparent;
     padding: 0;
   }
+
   .form-case {
     background-image: linear-gradient(
       to right top,

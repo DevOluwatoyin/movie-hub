@@ -6,18 +6,29 @@ const Movie = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
-  const fetchMovie = () => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMovieDetails(data);
-        console.log(data);
-      });
-  };
+ const fetchMovie = (mediaType) => {
+   let apiUrl = "";
+   if (mediaType === "movie") {
+     apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`;
+   } else if (mediaType === "tv") {
+     apiUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${api}`;
+   }
 
-  useEffect(() => {
-    fetchMovie();
-  }, []);
+   fetch(apiUrl)
+     .then((res) => res.json())
+     .then((data) => {
+       setMovieDetails(data);
+       console.log(data);
+     });
+ };
+
+ useEffect(() => {
+   // Determine media type based on the path
+   const mediaType = window.location.pathname.includes("/movie/")
+     ? "movie"
+     : "tv";
+   fetchMovie(mediaType);
+ }, []);
 
   if (!movieDetails) {
     return <div>Loading...</div>;

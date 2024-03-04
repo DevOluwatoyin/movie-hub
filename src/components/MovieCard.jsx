@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MovieCard = ({ movie }) => {
   return (
     <Link
-      to={`/movies/${movie.id}`}
+      to={`/movie/${movie.id}`}
       className="line relative shadow-box-shadow pt-2 rounded-lg overflow-hidden hover:opacity-[0.6]"
     >
       <svg
@@ -30,7 +30,7 @@ const MovieCard = ({ movie }) => {
       <div className="text-center py-2">
         <p className="md:text-xl">{movie.title || movie.original_name}</p>
         {movie.release_date && (
-          <p>{new Date(movie.release_date).toDateString()}</p>
+          <p>{new Date(movie.release_date).toLocaleString()}</p>
         )}
         {movie.first_air_date && (
           // <p>{movie.first_air_date}</p>

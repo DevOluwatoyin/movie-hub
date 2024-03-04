@@ -28,8 +28,8 @@ const MovieCard = ({ movie }) => {
         alt={movie.title}
       />
       <div className="text-center py-2">
-        <p className="md:text-xl">{movie.title}</p>
-        {movie.release_date && <p>{movie.release_date}</p>}
+        <p className="md:text-xl">{movie.title || movie.original_name}</p>
+        {movie.release_date || movie.first_air_date && <p>{movie.release_date || movie.first_air_date}</p>}
       </div>
     </Link>
   );

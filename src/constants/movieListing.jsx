@@ -4,16 +4,22 @@ export const movieListing = [
   {
     title: "What's Trending",
     path: "/trending",
-    component:<MovieList />,
+    component: (
+      <MovieList fetchUrl="https://api.themoviedb.org/3/trending/all/day" />
+    ),
   },
   {
     title: "Popular",
     path: "/popular",
-    component:"popular",
+    component: (
+      <MovieList fetchUrl="https://api.themoviedb.org/3/trending/all/day" />
+    ),
   },
   {
     title: "Trending",
     path: "/series",
-    component:"series",
-  }
+    component: (
+      <MovieList fetchUrl="https://api.themoviedb.org/3/trending/all/day" />
+    ),
+  },
 ];

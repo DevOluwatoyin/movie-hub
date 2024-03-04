@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
 const api = "d136620e549328df16c17b42f8f1d486";
-export const MovieList = () => {
+export const MovieList = ({fetchUrl}) => {
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = () => {
-    fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${api}`)
+    fetch(`${fetchUrl}?api_key=${api}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results.slice(0, 4));
+        console.log(data.results.slice(0, 4));
       });
   };
 

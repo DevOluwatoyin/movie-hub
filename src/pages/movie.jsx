@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
 
 const api = "d136620e549328df16c17b42f8f1d486";
 const Movie = () => {
@@ -18,7 +20,7 @@ const Movie = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovieDetails(data);
-        console.log(data);
+        // console.log(data);
       });
   };
 
@@ -29,6 +31,8 @@ const Movie = () => {
       : "tv";
     fetchMovie(mediaType);
   }, []);
+
+  const percentage = 66;
 
   if (!movieDetails) {
     return <div>Loading...</div>;
@@ -80,6 +84,36 @@ const Movie = () => {
                 <strong>Runtime:</strong>
                 {runtime} min
               </p>
+              {/* <CircularProgressbar value={percentage} text={`${percentage}%`} /> */}
+
+              <div className="w-20 h-20">
+                <CircularProgressbar
+                  value={percentage}
+                  text={`${percentage}%`}
+                  styles={buildStyles({
+                    // Rotation of path and trail, in number of turns (0-1)
+                    rotation: 1,
+
+                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                    strokeLinecap: "round",
+
+                    // Text size
+                    textSize: "16px",
+
+                    // How long animation takes to go from one percentage to another, in seconds
+                    pathTransitionDuration: 10,
+
+                    // Can specify path transition in more detail, or remove it entirely
+                    // pathTransition: 'none',
+
+                    // Colors
+                    pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
+                    textColor: "rgb(255, 41, 1)",
+                    trailColor: " rgb(255, 41, 1)",
+                    backgroundColor: "rgb(255, 41, 1)",
+                  })}
+                />
+              </div>
             </div>
           </div>
         </div>

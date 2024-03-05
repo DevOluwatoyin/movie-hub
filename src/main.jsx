@@ -9,6 +9,7 @@ import Trending from "./pages/trending.jsx";
 import Popular from "./pages/popular.jsx";
 import Series from "./pages/series.jsx";
 import Movie from "./pages/movie.jsx";
+import Tv from "./pages/tv.jsx";
 
 export default function Pages() {
   return (
@@ -22,6 +23,7 @@ export default function Pages() {
         <Route path="/popular" element={<Popular />} />
         <Route path="/series" element={<Series />} />
         <Route path="/movie/:id" element={<Movie />} />
+        <Route path="/tv/:id" element={<Tv />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

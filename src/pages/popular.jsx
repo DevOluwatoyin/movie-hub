@@ -22,7 +22,7 @@ const Popular = () => {
       <h1 className="text-3xl font-bold py-4">Popular Movies</h1>
       <div className="cards grid grid-cols-[1fr] justify-center gap-5">
         {movies.map((movie) => (
-          <MovieCard movie={movie} key={movie.id} />
+          <MovieCard movie={movie} key={movie.id} pagePath="movie" />
         ))}
       </div>
     </div>

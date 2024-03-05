@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, pagePath }) => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <Link
-      to={`/movie/${movie.id}`}
+      to={`/${pagePath}/${movie.id}`}
       className="line relative shadow-box-shadow pt-2 rounded-lg overflow-hidden hover:opacity-[0.6]"
     >
       <svg

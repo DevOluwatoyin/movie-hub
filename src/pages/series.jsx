@@ -23,7 +23,7 @@ const Series = () => {
       <h1 className="text-3xl font-bold py-4">Series Movies</h1>
       <div className="cards grid grid-cols-[1fr] justify-center gap-5">
         {series.map((series) => (
-          <MovieCard movie={series} key={series.id} />
+          <MovieCard movie={series} key={series.id} pagePath="tv" />
         ))}
       </div>
     </div>

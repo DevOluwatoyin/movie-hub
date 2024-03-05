@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
@@ -32,52 +32,41 @@ const MovieDetails = ({
           </div>
           <div className="relative mx-5 md:w-1/2">
             <h2 className="text-2xl font-bold">{title}</h2>
-            <p>{release_date}</p>
+            <p className="italic">{release_date}</p>
             <p className="italic">{tagline}</p>
-            <div className="my-4">
+            <div className="my-4 space-y-5">
               <h3 className="text-xl font-bold">Overview</h3>
               <p>{overview}</p>
-              <div>
-                <p>Genres:</p>
+              <div className="flex items-center gap-4">
+                <p className="font-bold">Genres:</p>
                 <div className="flex items-center gap-4">
                   {genres.map((each) => (
                     <p key={each.id}>{each.name}</p>
                   ))}
                 </div>
               </div>
-              <p>
-                <strong>Runtime:</strong>
-                {runtime} min
-              </p>
-              {/* <CircularProgressbar value={percentage} text={`${percentage}%`} /> */}
+              <div className="flex items-center gap-5">
+                <p>
+                  <strong className="inline-block mr-2">Runtime:</strong>
+                  {runtime} mins
+                </p>
 
-              <div className="w-20 h-20">
-                <CircularProgressbar
-                  value={percentage}
-                  text={`${percentage}%`}
-                  styles={buildStyles({
-                    // Rotation of path and trail, in number of turns (0-1)
-                    rotation: 1,
-
-                    // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-                    strokeLinecap: "round",
-
-                    // Text size
-                    textSize: "16px",
-
-                    // How long animation takes to go from one percentage to another, in seconds
-                    pathTransitionDuration: 10,
-
-                    // Can specify path transition in more detail, or remove it entirely
-                    // pathTransition: 'none',
-
-                    // Colors
-                    pathColor: `rgba(62, 152, 199, ${percentage / 100})`,
-                    textColor: "rgb(255, 41, 1)",
-                    trailColor: " rgb(255, 41, 1)",
-                    backgroundColor: "rgb(255, 41, 1)",
-                  })}
-                />
+                <div className="w-20 h-20">
+                  <CircularProgressbar
+                    value={percentage * 10}
+                    text={`${(percentage * 10).toFixed(2)}%`}
+                    styles={buildStyles({
+                      rotation: 1,
+                      strokeLinecap: "round",
+                      textSize: "16px",
+                      pathTransitionDuration: 0.5,
+                      pathColor: `rgba(255, 41, 1, ${(percentage * 10) / 100})`,
+                      textColor: "rgb(255, 41, 1)",
+                      trailColor: "white",
+                      backgroundColor: "rgb(255, 41, 1)",
+                    })}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -87,4 +76,4 @@ const MovieDetails = ({
   );
 };
 
-export default MovieDetails
+export default MovieDetails;

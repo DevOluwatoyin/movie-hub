@@ -35,6 +35,7 @@ const Movie = () => {
     genres,
     runtime,
     tagline,
+    vote_average
   } = movieDetails;
 
   return (
@@ -47,7 +48,7 @@ const Movie = () => {
       overview={overview}
       genres={genres}
       runtime={runtime}
-      percentage={percentage}
+      percentage={vote_average}
     />
   );
 };

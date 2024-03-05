@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Listing = ({list}) => {
   return (
-    <div className="trending max-w-4xl mx-auto">
+    <div className="max-w-4xl mx-auto">
       <div className="flex justify-between space-x-4 items-center mb-8">
         <div className="relative">
           <h2 className="relative text-2xl font-bold pb-1">

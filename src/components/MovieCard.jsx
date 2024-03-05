@@ -16,7 +16,7 @@ const MovieCard = ({ movie }) => {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="feather feather-heart favourite"
+        className="feather feather-heart favourite absolute right-5 top-5 z-10"
         color="purple"
       >
         <g>

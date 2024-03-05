@@ -6,36 +6,43 @@ const Movie = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
- const fetchMovie = (mediaType) => {
-   let apiUrl = "";
-   if (mediaType === "movie") {
-     apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`;
-   } else if (mediaType === "tv") {
-     apiUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${api}`;
-   }
+  const fetchMovie = (mediaType) => {
+    let apiUrl = "";
+    if (mediaType === "movie") {
+      apiUrl = `https://api.themoviedb.org/3/movie/${id}?api_key=${api}`;
+    } else if (mediaType === "tv") {
+      apiUrl = `https://api.themoviedb.org/3/tv/${id}?api_key=${api}`;
+    }
 
-   fetch(apiUrl)
-     .then((res) => res.json())
-     .then((data) => {
-       setMovieDetails(data);
-       console.log(data);
-     });
- };
+    fetch(apiUrl)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovieDetails(data);
+        console.log(data);
+      });
+  };
 
- useEffect(() => {
-   // Determine media type based on the path
-   const mediaType = window.location.pathname.includes("/movie/")
-     ? "movie"
-     : "tv";
-   fetchMovie(mediaType);
- }, []);
+  useEffect(() => {
+    // Determine media type based on the path
+    const mediaType = window.location.pathname.includes("/movie/")
+      ? "movie"
+      : "tv";
+    fetchMovie(mediaType);
+  }, []);
 
   if (!movieDetails) {
     return <div>Loading...</div>;
   }
 
-  const { backdrop_path, title, release_date, overview, runtime, tagline } =
-    movieDetails;
+  const {
+    backdrop_path,
+    title,
+    release_date,
+    overview,
+    genres,
+    runtime,
+    tagline,
+  } = movieDetails;
 
   return (
     <div className="pt-20 w-full md:h-screen bg-bg-transparent2">
@@ -61,6 +68,14 @@ const Movie = () => {
             <div className="my-4">
               <h3 className="text-xl font-bold">Overview</h3>
               <p>{overview}</p>
+              <div>
+                <p>Genres:</p>
+                <div className="flex items-center gap-4">
+                  {genres.map((each) => (
+                    <p key={each.id}>{each.name}</p>
+                  ))}
+                </div>
+              </div>
               <p>
                 <strong>Runtime:</strong>
                 {runtime} min

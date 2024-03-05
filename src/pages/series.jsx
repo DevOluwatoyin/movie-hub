@@ -10,7 +10,6 @@ const Series = () => {
       .then((res) => res.json())
       .then((data) => {
         setSeries(data.results.slice(0, 20));
-        // console.log(data.results.slice(0, 4));
       });
   };
 

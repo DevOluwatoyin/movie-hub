@@ -12,7 +12,6 @@ const Tv = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovieDetails(data);
-        // console.log(data);
       });
   };
 

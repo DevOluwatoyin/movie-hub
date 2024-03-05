@@ -10,7 +10,6 @@ export const MovieList = ({ fetchUrl, pagePath }) => {
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results.slice(0, 4));
-        // console.log(data.results.slice(0, 4));
       });
   };
 

@@ -47,10 +47,9 @@ const MovieCard = ({ movie, pagePath }) => {
       <div className="text-center py-2">
         <p className="md:text-xl">{movie.title || movie.original_name}</p>
         {movie.release_date && (
-          <p>{new Date(movie.release_date).toLocaleString()}</p>
+          <p>{new Date(movie.release_date).toDateString()}</p>
         )}
         {movie.first_air_date && (
-          // <p>{movie.first_air_date}</p>
           <p>{new Date(movie.first_air_date).toDateString("es")}</p>
         )}
       </div>

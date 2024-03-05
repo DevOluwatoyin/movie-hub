@@ -12,7 +12,6 @@ const Movie = () => {
       .then((res) => res.json())
       .then((data) => {
         setMovieDetails(data);
-        // console.log(data);
       });
   };
 
@@ -20,10 +19,12 @@ const Movie = () => {
     fetchMovie();
   }, []);
 
-  const percentage = 66;
-
   if (!movieDetails) {
-    return <div>Loading...</div>;
+    return (
+      <div className="grid place-items-center h-screen">
+        <div>Loading... Please wait</div>
+      </div>
+    );
   }
 
   const {
@@ -35,7 +36,7 @@ const Movie = () => {
     genres,
     runtime,
     tagline,
-    vote_average
+    vote_average,
   } = movieDetails;
 
   return (

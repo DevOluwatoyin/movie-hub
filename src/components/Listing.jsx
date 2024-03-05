@@ -12,7 +12,7 @@ const Listing = ({list}) => {
           <span className="line absolute w-full h-0.5 bottom-0"></span>
         </div>
         <Link to={list.path}>
-          <button className="bg-heart-color px-4 rounded-full">View all</button>
+          <button className="bg-heart-color py-2 px-8 rounded-full hover:bg-white hover:text-black transition-all">View all</button>
         </Link>
       </div>
       {list.component}

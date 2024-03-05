@@ -18,6 +18,8 @@ const MovieCard = ({ movie, pagePath }) => {
     localStorage.setItem(`movie_${movie.id}_clicked`, !clicked);
   };
 
+  const options = { year: "numeric", month: "short", day: "numeric" };
+
   return (
     <Link
       to={`/${pagePath}/${movie.id}`}
@@ -44,13 +46,20 @@ const MovieCard = ({ movie, pagePath }) => {
         src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
         alt={movie.title}
       />
-      <div className="text-center py-2">
-        <p className="md:text-xl">{movie.title || movie.original_name}</p>
+      <div className="pl-2 py-2">
+        <p>{movie.title || movie.original_name}</p>
         {movie.release_date && (
-          <p>{new Date(movie.release_date).toDateString()}</p>
+          <p>
+            {new Date(movie.release_date).toLocaleDateString("en-gb", options)}
+          </p>
         )}
         {movie.first_air_date && (
-          <p>{new Date(movie.first_air_date).toDateString("es")}</p>
+          <p>
+            {new Date(movie.first_air_date).toLocaleDateString(
+              "en-gb",
+              options
+            )}
+          </p>
         )}
       </div>
     </Link>

@@ -1,18 +1,20 @@
 import { useState } from "react";
 
 const SearchBar = ({ onSearch }) => {
-  const api = "d136620e549328df16c17b42f8f1d486";
   const [searchQuery, setSearchQuery] = useState("");
 
   const handleChange = (e) => {
-    setSearchQuery(e.target.value);
+    const inputValue = e.target.value;
+    if (inputValue.length !== 0 && inputValue !== "") {
+      setSearchQuery(inputValue);
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/multi?api_key=${api}&query=${searchQuery}`
+        `https://api.themoviedb.org/3/search/multi?api_key=${import.meta.env.API_KEY}&query=${searchQuery}`
       );
       const data = await response.json();
       onSearch(searchQuery, data.results);

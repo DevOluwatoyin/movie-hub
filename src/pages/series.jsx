@@ -3,10 +3,13 @@ import MovieCard from "../components/MovieCard";
 
 const Series = () => {
   const [series, setSeries] = useState([]);
-  const api = "d136620e549328df16c17b42f8f1d486";
 
   const fetchSeries = () => {
-    fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${api}`)
+    fetch(
+      `https://api.themoviedb.org/3/tv/popular?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
+    )
       .then((res) => res.json())
       .then((data) => {
         setSeries(data.results.slice(0, 20));

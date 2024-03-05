@@ -3,10 +3,13 @@ import MovieCard from "../components/MovieCard";
 
 const Popular = () => {
   const [movies, setMovies] = useState([]);
-  const api = "d136620e549328df16c17b42f8f1d486";
 
   const fetchPopularMovies = () => {
-    fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${api}`)
+    fetch(
+      `https://api.themoviedb.org/3/movie/popular?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results.slice(0, 20));

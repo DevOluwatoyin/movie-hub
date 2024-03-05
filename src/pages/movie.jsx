@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
 
-const api = "d136620e549328df16c17b42f8f1d486";
 const Movie = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
   const fetchMovie = () => {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api}`)
+    fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${
+        import.meta.env.VITE_API_KEY
+      }`
+    )
       .then((res) => res.json())
       .then((data) => {
         setMovieDetails(data);

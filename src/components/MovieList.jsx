@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
-const api = "d136620e549328df16c17b42f8f1d486";
 export const MovieList = ({ fetchUrl, pagePath }) => {
   const [movies, setMovies] = useState([]);
 
   const fetchMovies = () => {
-    fetch(`${fetchUrl}?api_key=${api}`)
+    fetch(`${fetchUrl}?api_key=${import.meta.env.VITE_API_KEY}`)
       .then((res) => res.json())
       .then((data) => {
         setMovies(data.results.slice(0, 4));

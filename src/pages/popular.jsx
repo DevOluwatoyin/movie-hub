@@ -20,9 +20,9 @@ const Popular = () => {
     fetchPopularMovies();
   }, []);
   return (
-    <div className="bg-bg-color mx-auto pt-14 p-4">
+    <div className="bg-bg-color pt-14 p-4">
       <h1 className="text-3xl font-bold py-4">Popular Movies</h1>
-      <div className="cards grid grid-cols-[1fr] justify-center gap-5">
+      <div className="cards grid grid-cols-[1fr] justify-center gap-5 md:max-w-6xl md:mx-auto">
         {movies.map((movie) => (
           <MovieCard movie={movie} key={movie.id} pagePath="movie" />
         ))}

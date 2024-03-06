@@ -12,7 +12,7 @@ export const movieListing = [
     ),
   },
   {
-    title: "Popular",
+    title: "Popular Movies",
     path: "/popular",
     component: (
       <MovieList
@@ -22,7 +22,7 @@ export const movieListing = [
     ),
   },
   {
-    title: "Trending",
+    title: "Popular Series",
     path: "/series",
     component: (
       <MovieList

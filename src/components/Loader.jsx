@@ -1,9 +1,24 @@
-import React from 'react'
+import React from "react";
 
-const Loader = () => {
+export const Loader = () => {
   return (
-    <div className="w-9 my-[10px] mx-auto h-9 border-[6px] border-white border-t-[#ff2901] animate-spin rounded-full"></div>
+    <div className="grid place-items-center h-screen">
+      <div className="text-center">
+        <div className="w-9 my-[10px] mx-auto h-9 border-[6px] border-white border-t-[#ff2901] animate-spin rounded-full"></div>
+        <p>Loading... Please wait</p>
+      </div>
+    </div>
   );
-}
+};
 
-export default Loader
+export const Error = ({ error }) => {
+  return <div>Error: {error}</div>;
+};
+
+export const ErrorPage = ({ error }) => {
+  return (
+    <div className="grid place-items-center h-screen">
+      <div>Error: {error}</div>
+    </div>
+  );
+};

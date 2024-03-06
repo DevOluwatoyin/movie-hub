@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Loader from "./Loader";
+import { Error } from "./Loader";
 
 const SearchBar = ({ onSearch }) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -48,10 +48,10 @@ const SearchBar = ({ onSearch }) => {
           className="btn w-full py-4 rounded-full text-center text-base md:text-2xl font-medium"
           disabled={loading}
         >
-          {loading ? (<Loader />) : "Show Me!"}
+          {loading ? "please wait..." : "Show Me!"}
         </button>
       </div>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && <Error error={error} />}
     </form>
   );
 };

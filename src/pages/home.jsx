@@ -3,7 +3,7 @@ import Listing from "../components/Listing";
 import { movieListing } from "../constants/movieListing";
 import { useState } from "react";
 import MovieCard from "../components/MovieCard";
-import {Loader} from "../components/Loader";
+import { Loader } from "../components/Loader";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,21 +32,37 @@ const Home = () => {
 
       <div className="px-4 w-full h-full bg-bg-color pt-14 pb-4 space-y-8">
         {searchResults ? (
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
-              <div className="relative">
-                <h2 className="relative text-2xl font-bold pb-1">
-                  Results for {`"${searchQuery}"`}
-                </h2>
-                <span className="line absolute w-full h-0.5 bottom-0 max-w-64"></span>
+          searchResults.length === 0 ? (
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8">
+                <div className="relative">
+                  <h2 className="relative text-2xl font-bold pb-1">
+                    Results for {`"${searchQuery}"`}
+                  </h2>
+                  <span className="line absolute w-full h-0.5 bottom-0 max-w-64"></span>
+                </div>
+              </div>
+              <div className="flex items-center justify-center text-xl font-bold">
+                No search results for {`"${searchQuery}"`}
               </div>
             </div>
-            <div className="cards grid grid-cols-[1fr] justify-center gap-5">
-              {searchResults.map((result) => (
-                <MovieCard movie={result} key={result.id} />
-              ))}
+          ) : (
+            <div className="max-w-4xl mx-auto">
+              <div className="mb-8">
+                <div className="relative">
+                  <h2 className="relative text-2xl font-bold pb-1">
+                    Results for {`"${searchQuery}"`}
+                  </h2>
+                  <span className="line absolute w-full h-0.5 bottom-0 max-w-64"></span>
+                </div>
+              </div>
+              <div className="cards grid grid-cols-[1fr] justify-center gap-5">
+                {searchResults.map((result) => (
+                  <MovieCard movie={result} key={result.id} />
+                ))}
+              </div>
             </div>
-          </div>
+          )
         ) : (
           <>
             {movieListing.map((list, index) => (

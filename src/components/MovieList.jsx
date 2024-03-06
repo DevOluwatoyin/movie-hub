@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import Loader from "./Loader";
+import { Error, Loader } from "./Loader";
 
 export const MovieList = ({ fetchUrl, pagePath }) => {
   const [movies, setMovies] = useState([]);
@@ -31,18 +31,11 @@ export const MovieList = ({ fetchUrl, pagePath }) => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="grid place-items-center h-screen">
-        <div className="text-center">
-          <Loader />
-          <p>Loading... Please wait</p>
-        </div>
-      </div>
-    );
+    return <Loader />;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error error={error} />;
   }
 
   return (

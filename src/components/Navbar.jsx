@@ -2,6 +2,8 @@ import logo from "/movie.svg";
 import { useEffect, useState } from "react";
 import NavItem from "./NavItem";
 import { navItems } from "../constants/navItems";
+import openIcon from "../assets/open.svg";
+import closeIcon from "../assets/close.svg";
 
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
@@ -37,7 +39,11 @@ const Navbar = () => {
         ))}
       </ul>
       <button className="flex md:hidden text-text-color" onClick={handleToggle}>
-        {navOpen ? <>Close me</> : <>Open Me</>}
+        {navOpen ? (
+          <img src={closeIcon} alt="close menu" />
+        ) : (
+          <img src={openIcon} alt="close menu" />
+        )}
       </button>
       {navOpen && (
         <ul className="absolute bg-[#171717bb] w-full h-screen flex flex-col justify-center space-y-8 items-center font-bold top-12 left-0">

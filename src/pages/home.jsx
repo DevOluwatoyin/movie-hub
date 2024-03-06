@@ -3,6 +3,7 @@ import Listing from "../components/Listing";
 import { movieListing } from "../constants/movieListing";
 import { useState } from "react";
 import MovieCard from "../components/MovieCard";
+import Loader from "../components/Loader";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +31,8 @@ const Home = () => {
       </div>
 
       <div className="px-4 w-full h-full bg-bg-color pt-14 pb-4 space-y-8">
+
+        <Loader />
         {searchResults ? (
           <div className="max-w-4xl mx-auto">
             <div className="mb-8">

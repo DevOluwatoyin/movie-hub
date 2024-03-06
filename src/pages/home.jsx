@@ -3,7 +3,6 @@ import Listing from "../components/Listing";
 import { movieListing } from "../constants/movieListing";
 import { useState } from "react";
 import MovieCard from "../components/MovieCard";
-import { Loader } from "../components/Loader";
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");

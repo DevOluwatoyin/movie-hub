@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { ErrorPage, Loader } from "../components/Loader";
 
 const Series = () => {
   const [series, setSeries] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchSeries = () => {
     fetch(
@@ -13,12 +16,25 @@ const Series = () => {
       .then((res) => res.json())
       .then((data) => {
         setSeries(data.results.slice(0, 20));
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
       });
   };
 
   useEffect(() => {
     fetchSeries();
   }, []);
+
+   if (loading) {
+     return <Loader />;
+   }
+
+   if (error) {
+     return <ErrorPage error={error} />;
+   }
 
   return (
     <div className="bg-bg-color pt-14 p-4">

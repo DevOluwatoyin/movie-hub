@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
-import Loader from "../components/Loader";
+import { ErrorPage, Loader } from "../components/Loader";
 
 const Movie = () => {
   const { id } = useParams();
@@ -37,20 +37,13 @@ const Movie = () => {
 
   if (loading) {
     return (
-      <div className="grid place-items-center h-screen">
-        <div className="text-center">
-          <Loader />
-          <p>Loading... Please wait</p>
-        </div>
-      </div>
+      <Loader />
     );
   }
 
   if (error) {
     return (
-      <div className="grid place-items-center h-screen">
-        <div>Error: {error}</div>
-      </div>
+      <ErrorPage error={error} />
     );
   }
 

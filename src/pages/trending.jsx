@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import { ErrorPage, Loader } from "../components/Loader";
 
 const Trending = () => {
   const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const fetchTrendingMovies = () => {
     fetch(
@@ -10,15 +13,33 @@ const Trending = () => {
         import.meta.env.VITE_API_KEY
       }`
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch");
+        }
+        return res.json();
+      })
       .then((data) => {
         setMovies(data.results.slice(0, 20));
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error.message);
+        setLoading(false);
       });
   };
 
   useEffect(() => {
     fetchTrendingMovies();
   }, []);
+
+    if (loading) {
+      return <Loader />;
+    }
+
+    if (error) {
+      return <ErrorPage error={error} />;
+    }
 
   return (
     <div className="bg-bg-color pt-14 p-4">

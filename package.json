@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint-staged": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0 prettier --check .",
+    "lint-staged": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepare": "husky", 
-    "format":"prettier --write ."
+    "prepare": "husky",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "react": "^18.2.0",

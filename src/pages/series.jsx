@@ -11,7 +11,7 @@ const Series = () => {
     fetch(
       `https://api.themoviedb.org/3/tv/popular?api_key=${
         import.meta.env.VITE_API_KEY
-      }`
+      }`,
     )
       .then((res) => res.json())
       .then((data) => {
@@ -28,13 +28,13 @@ const Series = () => {
     fetchSeries();
   }, []);
 
-   if (loading) {
-     return <Loader />;
-   }
+  if (loading) {
+    return <Loader />;
+  }
 
-   if (error) {
-     return <ErrorPage error={error} />;
-   }
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <div className="bg-bg-color pt-14 p-4">

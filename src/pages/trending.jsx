@@ -11,7 +11,7 @@ const Trending = () => {
     fetch(
       `https://api.themoviedb.org/3/trending/all/day?api_key=${
         import.meta.env.VITE_API_KEY
-      }`
+      }`,
     )
       .then((res) => {
         if (!res.ok) {
@@ -33,13 +33,13 @@ const Trending = () => {
     fetchTrendingMovies();
   }, []);
 
-    if (loading) {
-      return <Loader />;
-    }
+  if (loading) {
+    return <Loader />;
+  }
 
-    if (error) {
-      return <ErrorPage error={error} />;
-    }
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <div className="bg-bg-color pt-14 p-4">

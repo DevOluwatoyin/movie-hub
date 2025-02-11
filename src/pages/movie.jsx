@@ -9,11 +9,11 @@ const Movie = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchMovie =useCallback( () => {
+  const fetchMovie = useCallback(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${
         import.meta.env.VITE_API_KEY
-      }`
+      }`,
     )
       .then((res) => {
         if (!res.ok) {
@@ -36,15 +36,11 @@ const Movie = () => {
   }, [fetchMovie]);
 
   if (loading) {
-    return (
-      <Loader />
-    );
+    return <Loader />;
   }
 
   if (error) {
-    return (
-      <ErrorPage error={error} />
-    );
+    return <ErrorPage error={error} />;
   }
 
   const {

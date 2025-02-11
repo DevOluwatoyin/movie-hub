@@ -4,23 +4,16 @@ import MovieDetails from "../components/MovieDetails";
 import { ErrorPage, Loader } from "../components/Loader";
 
 const Tv = () => {
-
-
-
-
-  
-
-
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchMovie = useCallback( () => {
+  const fetchMovie = useCallback(() => {
     fetch(
       `https://api.themoviedb.org/3/tv/${id}?api_key=${
         import.meta.env.VITE_API_KEY
-      }`
+      }`,
     )
       .then((res) => {
         if (!res.ok) {
@@ -36,19 +29,19 @@ const Tv = () => {
         setError(error.message);
         setLoading(false);
       });
-  },[id]);
+  }, [id]);
 
   useEffect(() => {
     fetchMovie();
   }, [fetchMovie]);
 
- if (loading) {
-   return <Loader />;
- }
+  if (loading) {
+    return <Loader />;
+  }
 
- if (error) {
-   return <ErrorPage error={error} />;
- }
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   const {
     backdrop_path,

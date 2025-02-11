@@ -1,0 +1,5 @@
+{
+  "lint": {
+    "**/*": "prettier --write --ignore-unknown"
+  }
+}

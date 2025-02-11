@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useCallback, useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import { Error, Loader } from "./Loader";
 
@@ -7,7 +8,7 @@ export const MovieList = ({ fetchUrl, pagePath }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchMovies = () => {
+  const fetchMovies = useCallback(() => {
     setIsLoading(true);
     fetch(`${fetchUrl}?api_key=${import.meta.env.VITE_API_KEY}`)
       .then((res) => {
@@ -24,11 +25,11 @@ export const MovieList = ({ fetchUrl, pagePath }) => {
         setError(error.message);
         setIsLoading(false);
       });
-  };
+  }, [fetchUrl]);
 
   useEffect(() => {
     fetchMovies();
-  }, []);
+  }, [fetchMovies]);
 
   if (isLoading) {
     return <Loader />;

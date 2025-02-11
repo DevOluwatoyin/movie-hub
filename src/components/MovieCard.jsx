@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react/prop-types */
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const MovieCard = ({ movie, pagePath }) => {
@@ -57,7 +58,7 @@ const MovieCard = ({ movie, pagePath }) => {
           <p>
             {new Date(movie.first_air_date).toLocaleDateString(
               "en-gb",
-              options
+              options,
             )}
           </p>
         )}

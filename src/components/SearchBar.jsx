@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { Error } from "./Loader";
 
@@ -18,7 +19,7 @@ const SearchBar = ({ onSearch }) => {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/multi?api_key=${
           import.meta.env.VITE_API_KEY
-        }&query=${searchQuery}`
+        }&query=${searchQuery}`,
       );
       if (!response.ok) {
         throw new Error("Failed to fetch data");

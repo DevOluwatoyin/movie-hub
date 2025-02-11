@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
@@ -8,7 +7,10 @@ const NotFound = () => {
         <p>I greet you boss! 🙌</p>
         <p>
           This page no dey. Abeg go👉
-          <Link to="/" className="text-[#ff2901] underline underline-offset-4 hover:text-white hover:tracking-widest transition-colors">
+          <Link
+            to="/"
+            className="text-[#ff2901] underline underline-offset-4 hover:text-white hover:tracking-widest transition-colors"
+          >
             Home
           </Link>
         </p>

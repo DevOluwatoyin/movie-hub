@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MovieDetails from "../components/MovieDetails";
 import { ErrorPage, Loader } from "../components/Loader";
@@ -9,7 +9,7 @@ const Movie = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchMovie = () => {
+  const fetchMovie =useCallback( () => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${
         import.meta.env.VITE_API_KEY
@@ -29,11 +29,11 @@ const Movie = () => {
         setError(error.message);
         setLoading(false);
       });
-  };
+  }, [id]);
 
   useEffect(() => {
     fetchMovie();
-  }, []);
+  }, [fetchMovie]);
 
   if (loading) {
     return (
